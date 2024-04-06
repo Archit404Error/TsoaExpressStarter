@@ -7,6 +7,7 @@ import {
   Patch,
   Path,
   Post,
+  Put,
   Route,
   SuccessResponse,
 } from "tsoa";
@@ -51,6 +52,18 @@ export class UserController extends Controller {
   public async createUser(@Body() userData: User): Promise<User> {
     this.setStatus(201);
     return this.userService.insertUser(userData);
+  }
+
+  /**
+   * Incorporates company of provided user
+   * @param userId id of user whose company is being incorporated
+   * @returns promise resolving to updated user document
+   */
+  @Put("/incorporate/{userId}")
+  public async incorporateUserCompany(
+    @Path() userId: Types.ObjectId
+  ): Promise<User> {
+    return this.userService.incorporateUserCompany(userId);
   }
 
   /**

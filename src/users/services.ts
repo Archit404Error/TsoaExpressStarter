@@ -53,6 +53,25 @@ export class UserService {
   };
 
   /**
+   * Incorporates a user's company (i.e., adds 'inc' to the end of its name)
+   * If the company is already incorporated, aborts update and returns original document
+   * @param id the user whose company was incorporated
+   * @returns a promise resolving to the updated user document
+   */
+  public incorporateUserCompany = async (id: Types.ObjectId) => {
+    const user = await this.getUserById(id);
+
+    if (
+      user.company.substring(Math.max(0, user.company.length - 4)) === "inc."
+    ) {
+      return user;
+    }
+
+    user.company = user.company + " inc.";
+    return user.save();
+  };
+
+  /**
    * Deletes the user corresponding to a provided id
    * @param id the id of the user to delete
    */
