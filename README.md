@@ -10,10 +10,10 @@ Models are generated via [TypeGoose](https://typegoose.github.io/typegoose/) and
 
 The core philosophy of this backend is to be self-documenting via TypeScript types and JSDoc in `routes.ts`. Running `yarn dev` or `yarn build` will automatically generate swagger docs served at `localhost:{Process Port}/docs`.
 
-## Usage
+## Usage and Installation
 After cloning this repository, duplicate the `.envtemplate` file and rename it to `.env`. In local environments, set `NODE_ENV` equal to `dev`, and populate the `DEV_URI` and `PROD_URI` variables with your dev and prod MongoDB drive connection URIs, respectively.
 
-Once your `.env` is set up, run `yarn dev` to start a development server (which automatically restarts and recompiles swagger docs on saving any file in `src/`). To run a production build, use:
+Once your `.env` is set up, run `yarn` to install all dependencies. Run `yarn dev` to start a development server (which automatically restarts and recompiles swagger docs on saving any file in `src/`). To run a production build, use:
 ```
 yarn build
 yarn start
